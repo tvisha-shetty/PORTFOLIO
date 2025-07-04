@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tvisha Shetty | Data Science & AI Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #F8F5F0;
+            --sand: #E8E3D9;
+            --taupe: #D1CBC1;
+            --charcoal: #333333;
+            --slate: #6C7A89;
+            --accent: #A8B2A9;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--charcoal);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 30px 0;
+            transition: var(--transition);
+            background: transparent;
+        }
+        
+        header.scrolled {
+            padding: 20px 0;
+            background: rgba(248, 245, 240, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--charcoal);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 40px;
+        }
+        
+        .nav-links a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--charcoal);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--slate);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to bottom, var(--cream) 0%, rgba(248, 245, 240, 0.8) 100%);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding-top: 60px;
+        }
+        
+        .hero-subtitle {
+            color: var(--slate);
+            font-size: 18px;
+            margin-bottom: 20px;
+            display: block;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.3s;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+        
+        .hero-title {
+            font-size: 64px;
+            margin-bottom: 25px;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.5s;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        
+        .hero-text {
+            font-size: 18px;
+            max-width: 600px;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.7s;
+            color: var(--slate);
+            font-weight: 400;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background: transparent;
+            color: var(--charcoal);
+            border: 1px solid var(--charcoal);
+            border-radius: 0;
+            font-size: 15px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.9s;
+            letter-spacing: 1px;
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--charcoal);
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .btn:hover {
+            color: var(--cream);
+        }
+        
+        .btn:hover:before {
+            width: 100%;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            position: relative;
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 0.3s;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 42px;
+            display: inline-block;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .section-title p {
+            color: var(--slate);
+            max-width: 600px;
+            margin: 20px auto 0;
+            font-size: 18px;
+            font-weight: 400;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .about-img {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: fadeInLeft 1s forwards 0.5s;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.05);
+        }
+        
+        .about-img:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 1px solid var(--accent);
+            z-index: -1;
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .about-text {
+            flex: 1;
+            opacity: 0;
+            transform: translateX(50px);
+            animation: fadeInRight 1s forwards 0.5s;
+        }
+        
+        .about-text h3 {
+            font-size: 36px;
+            margin-bottom: 25px;
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+        
+        .about-text p {
+            margin-bottom: 30px;
+            color: var(--slate);
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .skill-category h4 {
+            margin-bottom: 20px;
+            color: var(--charcoal);
+            font-size: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .skill-category h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 1px;
+            background: var(--accent);
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 25px;
+            color: var(--slate);
+            font-size: 17px;
+        }
+        
+        .skill-list li:before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+        
+        .experience-card {
+            background: var(--sand);
+            padding: 40px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .experience-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--accent);
+            transition: var(--transition);
+            z-index: 2;
+        }
+        
+        .experience-card:hover:before {
+            height: 100%;
+        }
+        
+        .experience-date {
+            color: var(--slate);
+            font-weight: 500;
+            margin-bottom: 15px;
+            font-size: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .experience-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .experience-company {
+            color: var(--slate);
+            margin-bottom: 25px;
+            display: block;
+            font-size: 18px;
+            font-style: italic;
+        }
+        
+        .experience-details {
+            list-style: none;
+        }
+        
+        .experience-details li {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+            color: var(--slate);
+            line-height: 1.6;
+        }
+        
+        .experience-details li:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 1px;
+            background: var(--accent);
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+        }
+        
+        .project-card {
+            background: var(--sand);
+            position: relative;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .project-content {
+            padding: 40px;
+        }
+        
+        .project-title {
+            font-size: 26px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .project-description {
+            color: var(--slate);
+            margin-bottom: 30px;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 25px 0;
+        }
+        
+        .tech-tag {
+            background: rgba(168, 178, 169, 0.2);
+            color: var(--charcoal);
+            padding: 8px 18px;
+            border-radius: 0;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        .project-link {
+            display: inline-block;
+            color: var(--charcoal);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding-bottom: 2px;
+            border-bottom: 1px solid var(--charcoal);
+            transition: var(--transition);
+            letter-spacing: 0.5px;
+        }
+        
+        .project-link:hover {
+            color: var(--slate);
+            border-bottom-color: var(--slate);
+        }
+        
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .contact-info {
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        .contact-details {
+            margin-top: 40px;
+        }
+        
+        .contact-item {
+            margin-bottom: 25px;
+        }
+        
+        .contact-item h4 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--slate);
+        }
+        
+        .contact-item a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-size: 22px;
+            transition: var(--transition);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+        
+        .contact-item a:hover {
+            color: var(--slate);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--sand);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .footer-content {
+            font-size: 16px;
+            color: var(--slate);
+        }
+        
+        .footer-content a {
+            color: var(--charcoal);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-content a:hover {
+            color: var(--slate);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .animate {
+            animation: fadeInUp 1s forwards;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 50px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                gap: 50px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 25px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 10px 15px;
+            }
+            
+            .hero-title {
+                font-size: 42px;
+            }
+            
+            .section-title h2 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Tvisha Shetty</a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-subtitle">Data Science & AI Specialist</span>
+                <h1 class="hero-title">Creating intelligent solutions through data and algorithms</h1>
+                <p class="hero-text">Specializing in machine learning, NLP, and AI-powered applications with expertise in Python, predictive modeling, and secure enterprise solutions.</p>
+                <a href="#projects" class="btn">View Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Motivated Data Science professional with a strong foundation in machine learning, statistical analysis, and data visualization.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="WhatsApp Image 2025-07-04 at 10.54.39_b1e51681.jpg" alt="Tvisha Shetty">
+                </div>
+                <div class="about-text">
+                    <h3>Data Scientist & AI Engineer</h3>
+                    <p>I'm a Computer Science Engineering student specializing in Data Science at Manipal University, Jaipur. I'm expanding into AI-powered applications using LLMs and LangChain, with hands-on experience in Python, API integration, and machine learning.</p>
+                    <p>My passion lies in building real-world NLP solutions and secure AI applications for enterprise environments, with a focus on eliminating hallucinations in generative models.</p>
+                    
+                    <div class="skills">
+                        <div class="skill-category">
+                            <h4>Technical Expertise</h4>
+                            <ul class="skill-list">
+                                <li>Python, Java, C</li>
+                                <li>Machine Learning & NLP</li>
+                                <li>LangChain & LLM Integration</li>
+                                <li>Predictive Modeling</li>
+                                <li>Statistical Analysis</li>
+                                <li>Data Visualization</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Tools & Frameworks</h4>
+                            <ul class="skill-list">
+                                <li>Scikit-Learn, XGBoost</li>
+                                <li>Pandas, Numpy</li>
+                                <li>Streamlit, Hugging Face</li>
+                                <li>FAISS, Together API</li>
+                                <li>MySQL, Data Mining</li>
+                                <li>Anaconda, Jupyter</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Experience</h2>
+                <p>My journey in data science and cybersecurity domains</p>
+            </div>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="experience-date">Jun 2025 – Aug 2025</div>
+                    <h3 class="experience-title">Data Science Intern</h3>
+                    <span class="experience-company">Aurobindo Pharma, Hyderabad</span>
+                    <ul class="experience-details">
+                        <li>Built a pharma regulatory chatbot using LangChain, FAISS, and Mistral-7B to answer domain-specific queries from SOPs, cGMP guidelines, and FDA documents</li>
+                        <li>Engineered a secure Retrieval-Augmented Generation (RAG) pipeline leveraging Hugging Face embeddings and Together API</li>
+                        <li>Designed a full-stack Streamlit application with features like chat export, auto-scroll, and multi-document support</li>
+                        <li>Implemented secure, organization-wide authentication and integrated support for private networks</li>
+                    </ul>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-date">Cybersecurity Internship</div>
+                    <h3 class="experience-title">Cybersecurity Intern</h3>
+                    <span class="experience-company">Cisco NetAcad Program</span>
+                    <ul class="experience-details">
+                        <li>Completed Cisco's Cybersecurity Essentials program with focus on enterprise-grade network defense and threat detection</li>
+                        <li>Gained hands-on experience with security frameworks including intrusion detection systems (IDS) and access control protocols</li>
+                        <li>Conducted vulnerability assessments and implemented secure network segmentation techniques</li>
+                        <li>Explored cryptographic hashing, public key infrastructure (PKI), and multi-factor authentication protocols</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Projects</h2>
+                <p>Highlighting my technical implementations and solutions</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Pharma Regulatory Chatbot</h3>
+                        <p class="project-description">Secure chatbot using LLMs to answer domain-specific queries from SOPs, cGMP guidelines, and FDA documents. Features include multi-document support, organization-wide authentication, and strict prompt logic to eliminate hallucinations.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">Mistral-7B</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">FAISS</span>
+                        </div>
+                        <a href="https://github.com/tvisha-shetty/pharma-regulatory-chatbot" class="project-link">View on GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Breast Cancer Detection</h3>
+                        <p class="project-description">Predictive model to classify tumors as benign or malignant with 96.4% accuracy using ensemble methods. Includes data wrangling, feature engineering, and comprehensive model validation with stratified train-test splits.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">XGBoost</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">Matplotlib</span>
+                            <span class="tech-tag">Seaborn</span>
+                        </div>
+                        <a href="https://github.com/tvisha-shetty/Breast-Cancer-Detection-Prediction-Python" class="project-link">View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Feel free to reach out for collaborations or opportunities</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <h4>Email</h4>
+                            <a href="mailto:tvishaluckv@gmail.com">tvishalucky@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <h4>Phone</h4>
+                            <a href="tel:+919820511488">+91 98205 11488</a>
+                        </div>
+                        <div class="contact-item">
+                            <h4>LinkedIn</h4>
+                            <a href="https://www.linkedin.com/in/tvisha-shetty-174a2720b/" target="_blank">Tvisha Shetty</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>Designed & Built by Tvisha Shetty</p>
+                <p>© 2025 All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.section-title, .experience-card, .project-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Initialize animations
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+        
+        // Initialize experience cards animation
+        document.querySelectorAll('.experience-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.2}s`;
+        });
+        
+        // Initialize project cards animation
+        document.querySelectorAll('.project-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.2}s`;
+        });
+    </script>
+</body>
+</html>
